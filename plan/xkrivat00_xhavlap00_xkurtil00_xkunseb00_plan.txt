@@ -1,0 +1,43 @@
+Termíny:
+(spíše orientační, perfektní případ, bez zpoždění a chyb)
+
+Do 19.3.2025 - Odevzdání plánu projektu
+Do 20.3.2025 - Založení projektu v repo
+Do 21.3.2025 - Unit testy pro matematickou knihovnu
+Do 23.3.2025 - Implementace matematické knihovny
+Do 23.3.2025 - Proof-of-concept instalátoru
+Do 23.3.2025 - UI kalkulačky s responsivitou
+Do 25.3.2025 - Propojení UI s knihovnou
+Do 27.3.2025 - Testování kalkulačky
+Do 27.3.2025 - Kalkulačka směrodatné odchylky
+Do 27.3.2025 - Uživatelská dokumentace
+Do 30.3.2025 - Instalátor na kalkulačku
+(průběžně) Do 31.3.2025 - Testování, bugfixing, testování na cílené platformě
+
+=== volný čas na opravu a dokončení neštíhlých prací / rozšíření kalkulačky
+
+Do 1. 5. 2025 7:00 ráno - odevzdání souborů/instalátoru hotového projektu
+
+---------------------------------------------------------------------------
+
+Rozdělení úkolů:
+
+Tomáš Křivan (xkrivat00) - Uživatelská dokumentace, unit testy, dohled na práci
+Petr Havlát (xhavlap00) - Implementace matematické knihovny, Proofreading dokumentace
+Lukáš Kurtin (xkurtil00) - Kalkulačka směrodatné odchylky, UI a responzivita
+Sebastian Jesse Kun (xkunseb00) - Instalátor, Propojení kalkulačky s knihovnou
+
+---------------------------------------------------------------------------
+
+Komunikační kanály:
+Discord server (+ Trello, GitHub PRs)
+
+Pravidla:
+Na každé téma je zvlášť kanál (UI/MatLib/...)
+
+---------------------------------------------------------------------------
+
+Zpráva verzí:
+git + GitHub
+Odkaz na repo: https://github.com/KrivanTomas/kalkulacka-ita5-sebi
+(privátní repozitář, přístup přes účet ivskontrola)
