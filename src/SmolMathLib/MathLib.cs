@@ -17,7 +17,7 @@ namespace SmolMathLib
         {
             return 0;
         }
-
+        
         /// <summary>
         /// Subdivides the second number from the first
         /// </summary>
@@ -45,7 +45,6 @@ namespace SmolMathLib
         /// </summary>
         /// <param name="a">Dividend</param>
         /// <param name="b">Divisor</param>
-        /// <exception cref="DivideByZeroException"/>
         /// <returns>Quotient of the operation</returns>
         public static double Div(double a, double b)
         {
