@@ -78,7 +78,7 @@ namespace SmolMathLib
         /// <param name="r">Radicand</param>
         /// <param name="d">Degree</param>
         /// <returns></returns>
-        public static double Root(double r, double d)
+        public static double Root(double r, int d)
         {
             return 0;
         }
