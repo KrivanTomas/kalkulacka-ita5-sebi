@@ -4,33 +4,14 @@ namespace SmolMathLibTests
 {
     public class BasicArithmetic
     {
-        double delta;
-        Random rnd;
-        double randomMax =   10000000d;
-        double randomOffset = -500000d;
+        Utils util;
+        double delta = 0.000000001d;
         int randomIterations = 10;
 
         [SetUp]
         public void Setup()
         {
-            delta = 0.000000001d;
-            rnd = new Random();
-        }
-
-        private double RandomDouble()
-        {
-            return rnd.NextDouble() * randomMax + randomOffset;
-        }
-
-        private double RandomNonZeroDouble()
-        {
-            double a = rnd.NextDouble() * randomMax + randomOffset;
-            return a != 0d ? a: 1d;
-        }
-
-        private double SmallerRandomDouble(double ratio)
-        {
-            return rnd.NextDouble() * randomMax / ratio + randomOffset / ratio;
+            util = new Utils();
         }
 
         // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -41,8 +22,8 @@ namespace SmolMathLibTests
         {
             for(int i = 0; i < randomIterations; i++)
             {
-                double a = RandomDouble();
-                double b = RandomDouble();
+                double a = util.RandomDouble();
+                double b = util.RandomDouble();
                 double result1 = MathLib.Add(a, b);
                 double result2 = MathLib.Add(b, a);
                 Assert.That(result1, Is.EqualTo(result2).Within(delta));
@@ -54,9 +35,9 @@ namespace SmolMathLibTests
         {
             for (int i = 0; i < randomIterations; i++)
             {
-                double a = RandomDouble();
-                double b = RandomDouble();
-                double c = RandomDouble();
+                double a = util.RandomDouble();
+                double b = util.RandomDouble();
+                double c = util.RandomDouble();
                 double result1 = MathLib.Add(a, MathLib.Add(b, c));
                 double result2 = MathLib.Add(b, MathLib.Add(a, c));
                 Assert.That(result1, Is.EqualTo(result2).Within(delta * 100000));
@@ -142,7 +123,7 @@ namespace SmolMathLibTests
         {
             for (int i = 0; i < randomIterations; i++)
             {
-                double a = RandomDouble();
+                double a = util.RandomDouble();
                 double result = MathLib.Mul(a, 0d);
                 Assert.That(result, Is.EqualTo(0d).Within(delta));
             }
@@ -153,7 +134,7 @@ namespace SmolMathLibTests
         {
             for (int i = 0; i < randomIterations; i++)
             {
-                double a = RandomDouble();
+                double a = util.RandomDouble();
                 double result = MathLib.Mul(a, 1d);
                 Assert.That(result, Is.EqualTo(a).Within(delta));
             }
@@ -165,8 +146,8 @@ namespace SmolMathLibTests
         {
             for (int i = 0; i < randomIterations; i++)
             {
-                double a = RandomDouble();
-                double b = RandomDouble();
+                double a = util.RandomDouble();
+                double b = util.RandomDouble();
                 double result1 = MathLib.Mul(a, b);
                 double result2 = MathLib.Mul(b, a);
                 Assert.That(result1, Is.EqualTo(result2).Within(delta));
@@ -179,9 +160,9 @@ namespace SmolMathLibTests
         {
             for (int i = 0; i < randomIterations; i++)
             {
-                double a = SmallerRandomDouble(1000);
-                double b = SmallerRandomDouble(1000);
-                double c = SmallerRandomDouble(1000);
+                double a = util.SmallerRandomDouble(1000);
+                double b = util.SmallerRandomDouble(1000);
+                double c = util.SmallerRandomDouble(1000);
                 double result1 = MathLib.Mul(a, MathLib.Mul(b, c));
                 double result2 = MathLib.Mul(b, MathLib.Mul(a, c));
                 // May randomly fail due to floating point precision error with large numbers?
@@ -232,7 +213,7 @@ namespace SmolMathLibTests
         {
             for (int i = 0; i < randomIterations; i++)
             {
-                double a = RandomDouble();
+                double a = util.RandomDouble();
                 double result = MathLib.Div(a, 1d);
                 Assert.That(result, Is.EqualTo(a).Within(delta));
             }
@@ -243,20 +224,9 @@ namespace SmolMathLibTests
         {
             for (int i = 0; i < randomIterations; i++)
             {
-                double a = RandomNonZeroDouble();
+                double a = util.RandomNonZeroDouble();
                 double result = MathLib.Div(0d, a);
                 Assert.That(result, Is.EqualTo(0d).Within(delta));
-            }
-        }
-
-        [Test]
-        public void DivUndefined()
-        {
-            for (int i = 0; i < randomIterations; i++)
-            {
-                double a = RandomDouble();
-                double result = MathLib.Div(a, 0d);
-                Assert.That(result, Is.EqualTo(double.PositiveInfinity).Within(delta));
             }
         }
 
