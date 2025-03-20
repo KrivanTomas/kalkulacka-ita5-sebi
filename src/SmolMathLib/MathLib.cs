@@ -15,7 +15,7 @@ namespace SmolMathLib
         /// <returns>Sum of the two numbers</returns>
         public static double Add(double a, double b)
         {
-            return 0;
+            return a+b;
         }
         
         /// <summary>
@@ -26,7 +26,7 @@ namespace SmolMathLib
         /// <returns>Difference between the two numbers</returns>
         public static double Sub(double a, double b)
         {
-            return 0;
+            return a-b;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace SmolMathLib
         /// <returns>Product of the two numbers</returns>
         public static double Mul(double a, double b)
         {
-            return 0;
+            return a*b;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace SmolMathLib
         /// <returns>Quotient of the operation</returns>
         public static double Div(double a, double b)
         {
-            return 0;
+            return a/b;
         }
 
         /// <summary>
