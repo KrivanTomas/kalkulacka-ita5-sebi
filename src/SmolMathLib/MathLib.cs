@@ -58,7 +58,12 @@ namespace SmolMathLib
         /// <returns>Factorial of n</returns>
         public static ulong Fac(int n)
         {
-            return 0;
+            ulong factorial = 1;
+            for (int i = 2; i <= n; i++)
+            {
+                factorial *= Convert.ToUInt64(i);
+            }
+            return factorial;
         }
 
         /// <summary>
@@ -69,7 +74,12 @@ namespace SmolMathLib
         /// <returns>Base to the power of the exponent</returns>
         public static double Pow(double b, int e)
         {
-            return 0;
+            double result = 1;
+            for(int i = 0; i < e; i++)
+            {
+                result *= b;
+            }
+            return result;
         }
 
         /// <summary>
@@ -79,7 +89,7 @@ namespace SmolMathLib
         /// <param name="d">Degree</param>
         /// <returns></returns>
         public static double Root(double r, int d)
-        {
+        {            
             return 0;
         }
 
