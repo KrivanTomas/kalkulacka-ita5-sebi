@@ -73,7 +73,7 @@ namespace SmolMathLib
         }
 
         /// <summary>
-        /// 
+        /// Nth root
         /// </summary>
         /// <param name="r">Radicand</param>
         /// <param name="d">Degree</param>
@@ -84,12 +84,11 @@ namespace SmolMathLib
         }
 
         /// <summary>
-        /// Log of <c>b</c>(base) and <c>a</c>(anti-logarithm)
+        /// Natural (base e) logarithm
         /// </summary>
-        /// <param name="b">Base</param>
         /// <param name="a">Anti-logarithm</param>
-        /// <returns>Logarithm of a in base b</returns>
-        public static double Log(double b, double a)
+        /// <returns>Natural logarithm of b</returns>
+        public static double Log(double a)
         {
             return 0;
         }
