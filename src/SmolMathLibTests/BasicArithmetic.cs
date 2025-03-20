@@ -8,6 +8,7 @@ namespace SmolMathLibTests
         Random rnd;
         double randomMax =   10000000d;
         double randomOffset = -500000d;
+        int randomIterations = 10;
 
         [SetUp]
         public void Setup()
@@ -38,22 +39,28 @@ namespace SmolMathLibTests
         [Test]
         public void AddCommutativity()
         {
-            double a = RandomDouble();
-            double b = RandomDouble();
-            double result1 = MathLib.Add(a, b);
-            double result2 = MathLib.Add(b, a);
-            Assert.That(result1, Is.EqualTo(result2).Within(delta));
+            for(int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomDouble();
+                double b = RandomDouble();
+                double result1 = MathLib.Add(a, b);
+                double result2 = MathLib.Add(b, a);
+                Assert.That(result1, Is.EqualTo(result2).Within(delta));
+            }
         }
 
         [Test]
         public void AddAssociativity()
         {
-            double a = RandomDouble();
-            double b = RandomDouble();
-            double c = RandomDouble();
-            double result1 = MathLib.Add(a, MathLib.Add(b, c));
-            double result2 = MathLib.Add(b, MathLib.Add(a, c));
-            Assert.That(result1, Is.EqualTo(result2).Within(delta * 100000));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomDouble();
+                double b = RandomDouble();
+                double c = RandomDouble();
+                double result1 = MathLib.Add(a, MathLib.Add(b, c));
+                double result2 = MathLib.Add(b, MathLib.Add(a, c));
+                Assert.That(result1, Is.EqualTo(result2).Within(delta * 100000));
+            }
         }
 
         [TestCase(1d, 1d, 2d)]
@@ -133,41 +140,53 @@ namespace SmolMathLibTests
         [Test]
         public void MulAxiom1()
         {
-            double a = RandomDouble();
-            double result = MathLib.Mul(a, 0d);
-            Assert.That(result, Is.EqualTo(0d).Within(delta));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomDouble();
+                double result = MathLib.Mul(a, 0d);
+                Assert.That(result, Is.EqualTo(0d).Within(delta));
+            }
         }
 
         [Test]
         public void MulAxiom2()
         {
-            double a = RandomDouble();
-            double result = MathLib.Mul(a, 1d);
-            Assert.That(result, Is.EqualTo(a).Within(delta));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomDouble();
+                double result = MathLib.Mul(a, 1d);
+                Assert.That(result, Is.EqualTo(a).Within(delta));
+            }
         }
 
 
         [Test]
         public void MulCommutativity()
         {
-            double a = RandomDouble();
-            double b = RandomDouble();
-            double result1 = MathLib.Mul(a, b);
-            double result2 = MathLib.Mul(b, a);
-            Assert.That(result1, Is.EqualTo(result2).Within(delta));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomDouble();
+                double b = RandomDouble();
+                double result1 = MathLib.Mul(a, b);
+                double result2 = MathLib.Mul(b, a);
+                Assert.That(result1, Is.EqualTo(result2).Within(delta));
+            }
         }
 
 
         [Test]
         public void MulAssociativity()
         {
-            double a = SmallerRandomDouble(1000);
-            double b = SmallerRandomDouble(1000);
-            double c = SmallerRandomDouble(1000);
-            double result1 = MathLib.Mul(a, MathLib.Mul(b, c));
-            double result2 = MathLib.Mul(b, MathLib.Mul(a, c));
-            // May randomly fail due to floating point precision error with large numbers?
-            Assert.That(result1, Is.EqualTo(result2).Within(delta * 100000));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = SmallerRandomDouble(1000);
+                double b = SmallerRandomDouble(1000);
+                double c = SmallerRandomDouble(1000);
+                double result1 = MathLib.Mul(a, MathLib.Mul(b, c));
+                double result2 = MathLib.Mul(b, MathLib.Mul(a, c));
+                // May randomly fail due to floating point precision error with large numbers?
+                Assert.That(result1, Is.EqualTo(result2).Within(delta * 100000));
+            }
         }
 
         [TestCase(1d, 1d, 1d)]
@@ -211,25 +230,34 @@ namespace SmolMathLibTests
         [Test]
         public void DivAxiom1()
         {
-            double a = RandomDouble();
-            double result = MathLib.Div(a, 1d);
-            Assert.That(result, Is.EqualTo(a).Within(delta));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomDouble();
+                double result = MathLib.Div(a, 1d);
+                Assert.That(result, Is.EqualTo(a).Within(delta));
+            }
         }
 
         [Test]
         public void DivAxiom2()
         {
-            double a = RandomNonZeroDouble();
-            double result = MathLib.Div(0d, a);
-            Assert.That(result, Is.EqualTo(0d).Within(delta));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomNonZeroDouble();
+                double result = MathLib.Div(0d, a);
+                Assert.That(result, Is.EqualTo(0d).Within(delta));
+            }
         }
 
         [Test]
         public void DivUndefined()
         {
-            double a = RandomDouble();
-            double result = MathLib.Div(a, 0d);
-            Assert.That(result, Is.EqualTo(double.PositiveInfinity).Within(delta));
+            for (int i = 0; i < randomIterations; i++)
+            {
+                double a = RandomDouble();
+                double result = MathLib.Div(a, 0d);
+                Assert.That(result, Is.EqualTo(double.PositiveInfinity).Within(delta));
+            }
         }
 
         [TestCase(1d, 1d, 1d)]
