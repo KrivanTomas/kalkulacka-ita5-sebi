@@ -2,7 +2,7 @@ using SmolMathLib;
 
 namespace SmolMathLibTests
 {
-    public class Tests
+    public class BasicArithmetic
     {
         double delta;
         Random rnd;
