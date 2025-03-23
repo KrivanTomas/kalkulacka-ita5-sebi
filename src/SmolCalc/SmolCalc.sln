@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmolCalc", "SmolCalc.csproj", "{A8CB42B3-29CE-4775-9F40-97EEEA2FB1B2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SmolCalcInstaller", "..\SmolCalcInstaller\SmolCalcInstaller.vdproj", "{676C1894-D069-7252-E20B-0D1207A6CAF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{A8CB42B3-29CE-4775-9F40-97EEEA2FB1B2}.Release|ARM64.Build.0 = Release|ARM64
 		{A8CB42B3-29CE-4775-9F40-97EEEA2FB1B2}.Release|x64.ActiveCfg = Release|x64
 		{A8CB42B3-29CE-4775-9F40-97EEEA2FB1B2}.Release|x64.Build.0 = Release|x64
+		{676C1894-D069-7252-E20B-0D1207A6CAF4}.Debug|Any CPU.ActiveCfg = Debug
+		{676C1894-D069-7252-E20B-0D1207A6CAF4}.Debug|ARM64.ActiveCfg = Debug
+		{676C1894-D069-7252-E20B-0D1207A6CAF4}.Debug|x64.ActiveCfg = Debug
+		{676C1894-D069-7252-E20B-0D1207A6CAF4}.Release|Any CPU.ActiveCfg = Release
+		{676C1894-D069-7252-E20B-0D1207A6CAF4}.Release|ARM64.ActiveCfg = Release
+		{676C1894-D069-7252-E20B-0D1207A6CAF4}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
