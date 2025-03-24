@@ -9,4 +9,12 @@
     <Platforms>AnyCPU;x64;ARM64</Platforms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="logo01.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="logo01.png" />
+  </ItemGroup>
+
 </Project>

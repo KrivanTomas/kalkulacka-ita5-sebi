@@ -5,20 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmolCalc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="25*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="90*"/>
-        </Grid.ColumnDefinitions>
+        Title="Kalkulačka ITA5+Sebi" Height="420" Width="300" Background="White" Icon="/logo01.png">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
 
-        <Label x:Name="math_label" Content="Text12+489×x1/7" Grid.Row="0" Grid.Column="1" FontSize="50" FontFamily="Times New Roman"/>
-        
-        <Grid Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="5">
+            </Style.Resources>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Background" Value="#FFE2E2E2"/>
+            <Setter Property="BorderThickness" Value=".5"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="75*"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="calc_type_label" Content="Běžná kalkulačka" Grid.Row="0" FontFamily="Consolas" Foreground="Black" FontSize="12"/>
+        <Label x:Name="math_label" Content="Text12+489×x1/7" Grid.Row="1" FontFamily="Consolas" Foreground="Black" FontSize="30"/>
+
+        <Grid Grid.Row="2">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -35,6 +47,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            
+
             <Button Content="1" Grid.Row="1" Grid.Column="0"/>
             <Button Content="2" Grid.Row="1" Grid.Column="1"/>
             <Button Content="3" Grid.Row="1" Grid.Column="2"/>
@@ -45,21 +59,21 @@
             <Button Content="8" Grid.Row="3" Grid.Column="1"/>
             <Button Content="9" Grid.Row="3" Grid.Column="2"/>
             <Button Content="0" Grid.Row="4" Grid.Column="1"/>
-            
+
             <Button Content="+" Grid.Row="0" Grid.Column="4"/>
             <Button Content="-" Grid.Row="1" Grid.Column="4"/>
             <Button Content="×" Grid.Row="2" Grid.Column="4"/>
             <Button Content="/" Grid.Row="3" Grid.Column="4"/>
-            <Button Content="=" Grid.Row="4" Grid.Column="4"/>
+            <Button Content="=" Grid.Row="4" Grid.Column="4" Background="#FF900000" Foreground="White" FontWeight="Bold"/>
 
-            <Button Content="Del" Grid.Row="0" Grid.Column="3"/>
-            <Button Content="Clr" Grid.Row="0" Grid.Column="2"/>
+            <Button Content="Del" Grid.Row="0" Grid.Column="3" FontWeight="Bold"/>
+            <Button Content="Clr" Grid.Row="0" Grid.Column="2" FontWeight="Bold"/>
             <Button Content="," Grid.Row="4" Grid.Column="2"/>
 
             <Button Content="!" Grid.Row="1" Grid.Column="3"/>
             <Button Content="xⁿ" Grid.Row="2" Grid.Column="3"/>
             <Button Content="ⁿ√" Grid.Row="3" Grid.Column="3"/>
-            <Button Content="Ln" Grid.Row="4" Grid.Column="3"/>
+            <Button Content="ln" Grid.Row="4" Grid.Column="3"/>
         </Grid>
     </Grid>
 </Window>
