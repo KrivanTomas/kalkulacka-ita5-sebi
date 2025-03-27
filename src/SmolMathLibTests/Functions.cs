@@ -71,10 +71,10 @@ namespace SmolMathLibTests
         [TestCase(1d, 2, 1d)]
         [TestCase(1d, 4, 1d)]
         [TestCase(1d, 100, 1d)]
-        [TestCase(8d, 2, 2d)]
+        [TestCase(8d, 2, 2.8284271247461900976033774484194d)]
         [TestCase(144d, 2, 12d)]
-        [TestCase(324234d, 10, 3.557d)]
-        [TestCase(423d, 7, 2.3724d)]
+        [TestCase(324234d, 10, 3.5570163005790818833365111811645d)]
+        [TestCase(423d, 7, 2.3724194782191462630462054470579d)]
         public void RootTest(double a, int b, double expected)
         {
             double result = MathLib.Root(a, b);
