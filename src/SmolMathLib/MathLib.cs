@@ -90,7 +90,7 @@ namespace SmolMathLib
         /// <returns></returns>
         public static double Root(double r, int d)
         {            
-            return 0;
+            return Math.Pow(r, (double)1 / d);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace SmolMathLib
         /// <returns>Natural logarithm of b</returns>
         public static double Log(double a)
         {
-            return 0;
+            return Math.Log(a);
         }
     }
 
