@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmolMathLib", "..\SmolMathL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmolMathLibTests", "..\SmolMathLibTests\SmolMathLibTests.csproj", "{78B74F73-95AB-4F1E-B67B-898A070DF7BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardDeviationCalculator", "..\StandardDeviationCalculator\StandardDeviationCalculator.csproj", "{394CE043-920C-405E-99EA-DB612A15CF09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{78B74F73-95AB-4F1E-B67B-898A070DF7BF}.Release|ARM64.Build.0 = Release|Any CPU
 		{78B74F73-95AB-4F1E-B67B-898A070DF7BF}.Release|x64.ActiveCfg = Release|Any CPU
 		{78B74F73-95AB-4F1E-B67B-898A070DF7BF}.Release|x64.Build.0 = Release|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Debug|x64.Build.0 = Debug|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Release|ARM64.Build.0 = Release|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Release|x64.ActiveCfg = Release|Any CPU
+		{394CE043-920C-405E-99EA-DB612A15CF09}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
