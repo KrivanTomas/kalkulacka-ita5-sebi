@@ -19,6 +19,18 @@
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_BDF1029D13874E8BA4601B3306C0B173"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EEB67963F6114123A0B31048A9C79CE6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -37,6 +49,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -53,6 +81,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -84,6 +120,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BDF1029D13874E8BA4601B3306C0B173"
+            {
+            "SourcePath" = "8:SmolCalc.ico"
+            "TargetName" = "8:SmolCalc.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_D6F522016A6C44D1A228B56A6AC89E37"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EEB67963F6114123A0B31048A9C79CE6"
+            {
+            "SourcePath" = "8:uninstall.bat"
+            "TargetName" = "8:uninstall.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_D6F522016A6C44D1A228B56A6AC89E37"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -114,7 +190,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_D6F522016A6C44D1A228B56A6AC89E37"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -139,9 +215,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SmolCalcInstaller"
+        "ProductName" = "8:SmolCalc"
         "ProductCode" = "8:{51C58265-AC2C-4672-9099-AED1C99915DE}"
-        "PackageCode" = "8:{28777118-257D-4CF5-9924-89E432786C6C}"
+        "PackageCode" = "8:{92A3D7E4-CC3E-406F-9931-5EE1681DA3C9}"
         "UpgradeCode" = "8:{9B0F2F58-E4C8-4905-9A85-60E092F04A60}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -272,7 +348,7 @@
             "Target" = "8:_4FD5D7D0BE1E43A3BCED149A06BEF45E"
             "Folder" = "8:_C13EBADC6599405C8157BCC7EBE66396"
             "WorkingFolder" = "8:_D6F522016A6C44D1A228B56A6AC89E37"
-            "Icon" = "8:"
+            "Icon" = "8:_BDF1029D13874E8BA4601B3306C0B173"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A24B85F7586B4FE7A3CFC067B7DD62A7"
@@ -284,6 +360,20 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_4FD5D7D0BE1E43A3BCED149A06BEF45E"
+            "Folder" = "8:_6EB8B4FBF6504FD18863E12EC16726F9"
+            "WorkingFolder" = "8:_D6F522016A6C44D1A228B56A6AC89E37"
+            "Icon" = "8:_BDF1029D13874E8BA4601B3306C0B173"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E671924276B343099E3C1FF204C8DF9E"
+            {
+            "Name" = "8:Uninstall SmolCalc"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_EEB67963F6114123A0B31048A9C79CE6"
             "Folder" = "8:_6EB8B4FBF6504FD18863E12EC16726F9"
             "WorkingFolder" = "8:_D6F522016A6C44D1A228B56A6AC89E37"
             "Icon" = "8:"
