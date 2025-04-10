@@ -9,48 +9,57 @@ namespace StandardDeviationCalculator
 {
     public static class StandardDeviationCalculator
     {
-        
+
         public static int Main()
         {
-            int readChar; //input char
-            int readNum = 0;
             double sum = 0;
+            double sumOfPower2 = 0;
             int numCount = 0;
-            double s = 0; //Standard deviation
-            readChar = Console.Read();
 
-            while(true)
+            // reading variables
+            int readChar = Console.Read();
+            double readNum = 0;
+            bool decimalPresent = false;
+            bool lastWhitespace = true;
+            while (true)
             {
-                if ((readChar < '0' || readChar > '9') && !Char.IsWhiteSpace((char)readChar) && readChar != '\0')
+                if ((readChar < '0' || readChar > '9') && !Char.IsWhiteSpace((char)readChar) && readChar != -1)
                 {
                     Console.WriteLine("Error: input not number. Exiting\n\r");
-                    return 0;
+                    return 1;
                 }
-                if (!Char.IsWhiteSpace((char)readChar) && readChar != '\0')
+                if (!Char.IsWhiteSpace((char)readChar) && readChar != -1)
                 {
-                    readNum = readNum * 10 + (readChar - '0');
+                    //if(readChar == '.')
+                    readNum = MathLib.Add(readNum * 10, readChar - '0');
+                    lastWhitespace = false;
                 }
-                else
+                else if (!lastWhitespace)
                 {
-                    //full number read
-                    sum += readNum;
+                    sum = MathLib.Add(sum, readNum);
+                    sumOfPower2 = MathLib.Add(sumOfPower2, MathLib.Pow(readNum, 2));
                     readNum = 0;
                     numCount++;
-
+                    lastWhitespace = true;
                 }
-                
-                if (readChar == '\0') //EOF
+
+                if (readChar == -1) //EOF
                     break;
                 readChar = Console.Read();
             }
-            Console.WriteLine("Směrodatná odchylka: " + sum);
-            return 0;
-        }
 
-        public static void Func(int cislo)
-        {
-            Console.WriteLine((char)cislo);
-            return;
+            if (numCount == 0)
+            {
+                Console.Write("Error: No input given. Exiting\n\r");
+                return 1;
+            }
+
+            //úprava vzorců: N*(xavg)^2 <=> (N*(xsum)^2)/(N^2) <=> (xsum^2)/N
+            double avg = MathLib.Div(MathLib.Pow(sum, 2), numCount);
+            double s = MathLib.Root(MathLib.Div(MathLib.Sub(sumOfPower2, avg), numCount - 1), 2);
+            Console.WriteLine(s);
+
+            return 0;
         }
     }
 
