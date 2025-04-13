@@ -1,7 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-// To-do: 
-//  SDC (Standard deviation calculator)
+﻿// To-do: 
 //  Profiling
+// Additional:
+//  Decimal numbers
 
 using SmolMathLib;
 
@@ -9,9 +9,9 @@ namespace StandardDeviationCalculator
 {
     public static class StandardDeviationCalculator
     {
-
         public static int Main()
         {
+            int eofChar = -1; // mainly for testing purposes, indicates EOF character; default=-1
             double sum = 0;
             double sumOfPower2 = 0;
             int numCount = 0;
@@ -19,31 +19,47 @@ namespace StandardDeviationCalculator
             // reading variables
             int readChar = Console.Read();
             double readNum = 0;
-            bool decimalPresent = false;
             bool lastWhitespace = true;
+            bool setNegative = false;
+
             while (true)
             {
-                if ((readChar < '0' || readChar > '9') && !Char.IsWhiteSpace((char)readChar) && readChar != -1)
-                {
-                    Console.WriteLine("Error: input not number. Exiting\n\r");
-                    return 1;
-                }
-                if (!Char.IsWhiteSpace((char)readChar) && readChar != -1)
-                {
-                    //if(readChar == '.')
-                    readNum = MathLib.Add(readNum * 10, readChar - '0');
+                // character '-1' is eof
+                if(!Char.IsWhiteSpace((char)readChar) && readChar != eofChar) {
+                    if ((readChar < '0' || readChar > '9') && readChar != '-')
+                    {
+                        Console.WriteLine("Error: input not number. Exiting\n\r");
+                        return 1;
+                    }
+                    // input is {<0,9>; -}
+
+                    if (readNum == 0 && readChar == '-') {
+                        setNegative = true;
+                    }
+                    else if(readChar == '-'){
+                        Console.WriteLine("Error: \'-\' character inside number. Exiting\n\r");
+                        return 1;
+                    }
+                    else {
+                        // load number
+                        readNum = MathLib.Add(readNum * 10, readChar - '0');
+                    }
+
                     lastWhitespace = false;
                 }
                 else if (!lastWhitespace)
                 {
+                    if (setNegative)
+                        readNum *= -1;
+
                     sum = MathLib.Add(sum, readNum);
                     sumOfPower2 = MathLib.Add(sumOfPower2, MathLib.Pow(readNum, 2));
                     readNum = 0;
                     numCount++;
                     lastWhitespace = true;
+                    setNegative = false;
                 }
-
-                if (readChar == -1) //EOF
+                if (readChar == eofChar) //EOF
                     break;
                 readChar = Console.Read();
             }
