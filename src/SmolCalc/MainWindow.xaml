@@ -31,7 +31,7 @@
 
         <Label x:Name="calc_mode_label" Content="Běžná kalkulačka" Grid.Row="0" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold"/>
         <Label x:Name="expression_label" Content="" FontFamily="Consolas" Foreground="Black" FontSize="20" HorizontalContentAlignment="Right" Margin="0,33,0,0" Grid.RowSpan="3"/>
-        <Label x:Name="result_label" Content="2" FontFamily="Consolas" Foreground="Black" FontSize="42" HorizontalContentAlignment="Right" Grid.Row="2" Margin="0,2,0,0"/>
+        <Label x:Name="result_label" Content="0" FontFamily="Consolas" Foreground="Black" FontSize="42" HorizontalContentAlignment="Right" Grid.Row="2" Margin="0,2,0,0"/>
 
         <Grid Grid.Row="3" Margin="0,0,0,0">
 

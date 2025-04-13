@@ -27,65 +27,37 @@ public partial class MainWindow : Window
         Button clickedButton = sender as Button;
         if (clickedButton != null)
         {
-            string newExpression = (string)expression_label.Content;
+            string newExpression = (string)result_label.Content;
             if (clickedButton.Tag != null)
             {
-                string funcExpression = (string)clickedButton.Tag;
-                newExpression += operators_[funcExpression];
-                expression_label.Content = OperatorValidation(newExpression);
+                string buttonContent = (string)clickedButton.Content;
+                newExpression = result_label.Content + " " + buttonContent;
+                expression_label.Content = newExpression;
             }
             else
             {
+                string expression = (string)result_label.Content;
                 string buttonContent = (string)clickedButton.Content;
-                newExpression += buttonContent;
-                expression_label.Content = NumberValidation(newExpression);
+                if (expression.Length == 1 && expression == "0" && buttonContent != "0")
+                {
+                    newExpression = buttonContent;
+                }
+                else
+                {
+                    newExpression += buttonContent;
+                    newExpression = NumberValidation(newExpression);
+                }
+                result_label.Content = newExpression;
             }
         }
     }
-
-    private string OperatorValidation(string content)
-    {
-        if (string.IsNullOrEmpty(content))
-            return content;
-
-        string contentCleared = "";
-
-        foreach (char value in content)
-        {
-            if (char.IsDigit(value) || value == ',' || value == '-')
-                contentCleared += ";";
-            else
-                contentCleared += value.ToString();
-        }
-
-        string lastOperator = contentCleared.Split(';').LastOrDefault() ?? "";
-
-        if(lastOperator.Length > 1)
-        {
-            string correctOperator = lastOperator[0].ToString();
-            content = content.Replace(lastOperator, correctOperator);
-        }
-
-        return content;
-    }
+    
     private string NumberValidation(string content)
     {
-        if (string.IsNullOrEmpty(content))
-            return content;
-
-        string contentCleared = content;
-
-        foreach (var (key, expr) in operators_)
+        if (content.Length > 1 && content.StartsWith("0") && !content.StartsWith("0,"))
         {
-            contentCleared = contentCleared.Replace(expr, ";");
-        }
-
-        string lastNumber = contentCleared.Split(';').LastOrDefault();
-
-        if (lastNumber.Length > 1 && lastNumber.StartsWith("0") && !lastNumber.StartsWith("0,"))
-        {
-            string correctNumber = "0," + lastNumber.Substring(1);
-            content = content.Replace(lastNumber, correctNumber);
+            string correctNumber = "0," + content.Substring(1);
+            content = content.Replace(content, correctNumber);
         }
 
         return content;
