@@ -1,9 +1,4 @@
-﻿// To-do: 
-//  Profiling
-// Additional:
-//  Decimal numbers
-
-using SmolMathLib;
+﻿using SmolMathLib;
 
 namespace StandardDeviationCalculator
 {
@@ -11,7 +6,9 @@ namespace StandardDeviationCalculator
     {
         public static int Main()
         {
-            int eofChar = -1; // mainly for testing purposes, indicates EOF character; default=-1
+            // needs to be changed for manual input, indicates EOF character; default = -1
+            int eofChar = -1;
+
             double sum = 0;
             double sumOfPower2 = 0;
             int numCount = 0;
@@ -31,12 +28,13 @@ namespace StandardDeviationCalculator
                         Console.WriteLine("Error: input not number. Exiting\n\r");
                         return 1;
                     }
-                    // input is {<0,9>; -}
+                    // input is <0,9> or -
 
                     if (readNum == 0 && readChar == '-') {
                         setNegative = true;
                     }
                     else if(readChar == '-'){
+                        // '-' character is inside a number f.e. 15-753
                         Console.WriteLine("Error: \'-\' character inside number. Exiting\n\r");
                         return 1;
                     }
@@ -71,13 +69,23 @@ namespace StandardDeviationCalculator
             }
 
             //úprava vzorců: N*(xavg)^2 <=> (N*(xsum)^2)/(N^2) <=> (xsum^2)/N
-            double avg = MathLib.Div(MathLib.Pow(sum, 2), numCount);
-            double s = MathLib.Root(MathLib.Div(MathLib.Sub(sumOfPower2, avg), numCount - 1), 2);
+            double s = CalculateStandardDeviation(sum, sumOfPower2, numCount);
             Console.WriteLine(s);
-
             return 0;
         }
-    }
 
-}
+        /**
+         * <summary> Calculates the Standard Deviation from sums of numbers </summary>
+         * <param name="sum">Sum of all numbers</param> 
+         * <param name="powerSum">Sum of powers of 2 of all numbers individually</param>
+         * <param name="n">Count of numbers</param>
+         * <returns>Resulting Standard Deviation of type double</returns>
+         */
+        public static double CalculateStandardDeviation(double sum, double powerSum, int n)
+        {
+            double avg = MathLib.Div(MathLib.Pow(sum, 2), n);
+            return MathLib.Root(MathLib.Div(MathLib.Sub(powerSum, avg), n - 1), 2);
+        }
+    } //end class
+} //end namespace
 
