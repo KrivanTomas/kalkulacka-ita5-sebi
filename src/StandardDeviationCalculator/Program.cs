@@ -6,7 +6,6 @@ namespace StandardDeviationCalculator
     {
         public static int Main()
         {
-            // needs to be changed for manual input, indicates EOF character; default = -1
             int eofChar = -1;
 
             double sum = 0;

@@ -1,0 +1,13 @@
+Profilování bylo provedeno za využití nástroje implementovaného ve Visual Studiu 2022.
+
+Poznámka: Data funkce "Read()" jsou zavádějící, protože systém touto funkcí čeká na lidský vstup. 
+Reálný čas programu netrvá na nadprůměrném zařízení déle než 0,5 sekundy.
+
+Nejdéle trvá čtení znaků z stdin funkcí "Console.Read()". 
+Příčinou je čtení po jednom znaku, tento způsob načítání dat je velice neefektivní. 
+Optimalizace by se měla zaměřit na implementaci rychlejšího algoritmu, například 
+čtení po blocích namísto znaků.
+
+Další optimalizace by se mohla zaobývat matematické knihovny. V programu se volají základní matematické 
+funkce jako "MathLib.Add()", které zde pouze testují jejich správnost a propojení matematické knihovny 
+s různými projekty. Použití základních operátorů je dostačující.
