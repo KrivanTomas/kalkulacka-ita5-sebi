@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SmolMathLib;
 
 namespace SmolCalc;
 
@@ -22,52 +23,153 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
+    private string currentOperator = "";
+    private double? firstNumber = null;
+    private bool isNewEntry = false;
     private void ButtonClick(object sender, RoutedEventArgs e)
     {
         Button clickedButton = sender as Button;
         if (clickedButton != null)
         {
-            string newExpression = (string)result_label.Content;
-            if (clickedButton.Tag != null)
+            string buttonContent = clickedButton.Content.ToString();
+            string tag = clickedButton.Tag?.ToString();
+
+            if (tag == "num")
             {
-                string buttonContent = (string)clickedButton.Content;
-                newExpression = result_label.Content + " " + buttonContent;
-                expression_label.Content = newExpression;
-            }
-            else
-            {
-                string expression = (string)result_label.Content;
-                string buttonContent = (string)clickedButton.Content;
-                if (expression.Length == 1 && expression == "0" && buttonContent != "0")
+                string content = result_label.Content.ToString();
+                if (isNewEntry || content == "0")
                 {
-                    newExpression = buttonContent;
+                    content = buttonContent;
                 }
                 else
                 {
-                    newExpression += buttonContent;
-                    newExpression = NumberValidation(newExpression);
+                    content += buttonContent;
                 }
-                result_label.Content = newExpression;
+
+                result_label.Content = content;
+                isNewEntry = false;
+            }
+            else if (tag == "dot")
+            {
+                string content = result_label.Content.ToString();
+                if (isNewEntry || string.IsNullOrEmpty(content))
+                {
+                    content = "0.";
+                }
+                else if (!content.Contains("."))
+                {
+                    content += ".";
+                }
+
+                result_label.Content = content;
+                isNewEntry = false;
+            }
+            else if (tag == "op")
+            {
+                firstNumber = double.Parse(result_label.Content.ToString());
+                currentOperator = buttonContent;
+                if (currentOperator == "xⁿ")
+                {
+                    expression_label.Content = $"pow({firstNumber},";
+                }
+                else if (currentOperator == "ⁿ√")
+                {
+                    expression_label.Content = $"root({firstNumber},";
+                }
+                else
+                {
+                    expression_label.Content = $"{firstNumber} {buttonContent}";
+                }
+
+                isNewEntry = true;
+            }
+            else if (tag == "equals")
+            {
+                if (firstNumber.HasValue && !string.IsNullOrEmpty(currentOperator))
+                {
+                    double secondNumber = double.Parse(result_label.Content.ToString());
+                    double result = Calculate(firstNumber.Value, secondNumber, currentOperator);
+                    result_label.Content = result.ToString();
+                    if (currentOperator == "xⁿ")
+                    {
+                        expression_label.Content += $"{secondNumber})";
+                    }
+                    else if (currentOperator == "ⁿ√")
+                    {
+                        expression_label.Content += $"{secondNumber})";
+                    }
+                    else
+                    {
+                        expression_label.Content = $"{firstNumber} {currentOperator} {secondNumber} =";
+                    }
+                    firstNumber = result;
+                    currentOperator = "";
+                    isNewEntry = true;
+                }
+            }
+            else if (tag == "opSpecial")
+            {
+                double value = double.Parse(result_label.Content.ToString());
+                double result = CalculateSpecial(value, buttonContent);
+                result_label.Content = result.ToString();
+                expression_label.Content = SpecialOperatorLabel(value, buttonContent);
+                isNewEntry = true;
+            }
+            else if (tag == "Clr")
+            {
+                result_label.Content = "0";
+                expression_label.Content = "";
+                firstNumber = null;
+                currentOperator = "";
+                isNewEntry = true;
+            }
+            else if (tag == "Del")
+            {
+                string content = result_label.Content.ToString();
+                if (!isNewEntry && content.Length > 1)
+                {
+                    content = content.Substring(0, content.Length - 1);
+                }
+                else
+                {
+                    content = "0";
+                }
+
+                result_label.Content = content;
             }
         }
     }
     
-    private string NumberValidation(string content)
+    private string SpecialOperatorLabel(double value, string op)
     {
-        if (content.Length > 1 && content.StartsWith("0") && !content.StartsWith("0,"))
+        return op switch
         {
-            string correctNumber = "0," + content.Substring(1);
-            content = content.Replace(content, correctNumber);
-        }
-
-        return content;
+            "!" => $"fac({value})",
+            "ln" => $"ln({value})",
+            _ => value.ToString()
+        };
     }
 
-    private Dictionary<string, string> operators_ = new Dictionary<string, string>() 
+    private double CalculateSpecial(double number, string op)
     {
-        { "add", "+" },
-        { "sub", "-" },
-        { "mult", "×" },
-        { "div", "/" },
-    }; 
+        return op switch
+        {
+            "!" => MathLib.Fac((int)number),
+            "ln" => MathLib.Log(number),
+            _ => number
+        };
+    }
+    private double Calculate(double firstNumber, double secondNumber, string op)
+    {
+        return op switch
+        {
+            "+" => MathLib.Add(firstNumber, secondNumber),
+            "-" => MathLib.Sub(firstNumber, secondNumber),
+            "×" => MathLib.Mul(firstNumber, secondNumber),
+            "/" => MathLib.Div(firstNumber, secondNumber),
+            "xⁿ" => MathLib.Pow(firstNumber, (int)secondNumber),
+            "ⁿ√" => secondNumber == 0 ? MathLib.Root(firstNumber, 2) : MathLib.Root(firstNumber, (int)secondNumber),
+            _ => secondNumber
+        };
+    }
 }
