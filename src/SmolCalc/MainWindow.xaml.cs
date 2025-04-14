@@ -37,9 +37,9 @@ public partial class MainWindow : Window
             if (tag == "num")
             {
                 string content = result_label.Content.ToString();
-                if (isNewEntry || content == "0")
+                if (isNewEntry || content == "0" || content == "-0")
                 {
-                    content = buttonContent;
+                    content = (content.StartsWith("-") ? "-" : "") + buttonContent;
                 }
                 else
                 {
@@ -63,6 +63,14 @@ public partial class MainWindow : Window
 
                 result_label.Content = content;
                 isNewEntry = false;
+            }
+            else if (buttonContent == "-" && (isNewEntry || result_label.Content.ToString() == "0"))
+            {
+                string content = "0";
+                if (!content.StartsWith("-"))
+                {
+                    result_label.Content = "-" + content;
+                }
             }
             else if (tag == "op")
             {
@@ -128,7 +136,14 @@ public partial class MainWindow : Window
                 string content = result_label.Content.ToString();
                 if (!isNewEntry && content.Length > 1)
                 {
-                    content = content.Substring(0, content.Length - 1);
+                    if (content.Length == 2 && content.StartsWith("-"))
+                    {
+                        content = "0";
+                    }
+                    else
+                    {
+                        content = content.Substring(0, content.Length - 1);
+                    }
                 }
                 else
                 {
