@@ -301,7 +301,7 @@ public partial class MainWindow : Window
             result = 0;
             return true;
         }
-        else if (op == "!" && (value < 0 || value > 65 || value != (int)value))
+        else if (op == "!" && (value < 0 || value > 22 || value != (int)value))
         {
             expression_label.Content = SpecialOperatorLabel(value, op);
             result_label.Content = "Invalid";
