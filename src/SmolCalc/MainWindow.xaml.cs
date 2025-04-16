@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -95,7 +96,7 @@ public partial class MainWindow : Window
             else if (tag == "op")
             {
                 // Check if there was an error last time
-                if (!double.TryParse(result_label.Content.ToString(), out double secondNumber))
+                if (!double.TryParse(result_label.Content.ToString(), CultureInfo.InvariantCulture, out double secondNumber))
                 {
                     return;
                 }
@@ -167,7 +168,7 @@ public partial class MainWindow : Window
                 // If we have two numbers and an operator
                 if (firstNumber.HasValue && !string.IsNullOrEmpty(currentOperator))
                 {
-                    double secondNumber = double.Parse(result_label.Content.ToString());
+                    double secondNumber = double.Parse(result_label.Content.ToString(), CultureInfo.InvariantCulture);
 
                     // Validate operations like dividing by zero
                     if (OperationValidation(secondNumber, currentOperator))
@@ -184,7 +185,7 @@ public partial class MainWindow : Window
                         result = 0;
                     }
 
-                    result_label.Content = result.ToString();
+                    result_label.Content = result.ToString(CultureInfo.InvariantCulture);
 
                     // If else block for special operators that need different expressions
                     if (currentOperator == "xⁿ")
@@ -209,7 +210,7 @@ public partial class MainWindow : Window
             else if (tag == "opSpecial")
             {
                 // Check if there was an error last time
-                if(!double.TryParse(result_label.Content.ToString(), out double value))
+                if(!double.TryParse(result_label.Content.ToString(), CultureInfo.InvariantCulture, out double value))
                 {
                     return;
                 }
@@ -230,12 +231,12 @@ public partial class MainWindow : Window
                     result = Calculate(firstNumber.Value, result, currentOperator);
                     expression_label.Content = $"{SpecialOperatorLabel(value, buttonContent)}";
                 }
-                else 
+                else
                 {
                     expression_label.Content = $"{SpecialOperatorLabel(value, buttonContent)}";
                 }
 
-                result_label.Content = result.ToString();
+                result_label.Content = result.ToString(CultureInfo.InvariantCulture);
 
                 firstNumber = result;
                 currentOperator = "";
@@ -335,7 +336,7 @@ public partial class MainWindow : Window
         {
             "!" => $"fac({value}) =",
             "ln" => $"ln({value}) =",
-            _ => value.ToString()
+            _ => value.ToString(CultureInfo.InvariantCulture)
         };
     }
 
