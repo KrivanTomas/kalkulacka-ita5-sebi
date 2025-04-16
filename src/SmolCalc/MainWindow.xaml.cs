@@ -26,6 +26,8 @@ public partial class MainWindow : Window
     private string currentOperator = "";
     private double? firstNumber = null;
     private bool isNewEntry = false;
+    private double result = 0;
+    private bool chaining = false;
 
     /// <summary>
     /// When a button is clicked this function processes it 
@@ -48,8 +50,12 @@ public partial class MainWindow : Window
             {
                 string content = result_label.Content.ToString();
 
-                // If it's a new entry or there weren't any number inputs yet
-                if (isNewEntry || content == "0" || content == "-0")
+                // If it's a new entry
+                if (isNewEntry)
+                {
+                    content = buttonContent;
+                }
+                else if (content == "0" || content == "-0")
                 {
                     // Replace the 0 with the new number
                     content = (content.StartsWith("-") ? "-" : "") + buttonContent;
@@ -68,7 +74,7 @@ public partial class MainWindow : Window
                 string content = result_label.Content.ToString();
 
                 // If its a new entry or there werent any number inputs yet
-                if (isNewEntry || string.IsNullOrEmpty(content))
+                if (isNewEntry)
                 {
                     content = "0.";
                 }
@@ -80,19 +86,65 @@ public partial class MainWindow : Window
                 result_label.Content = content;
                 isNewEntry = false;
             }
-            // If there werent any inputs yet it changes the number to negative
-            else if (buttonContent == "-" && (isNewEntry || result_label.Content.ToString() == "0"))
+            // If there werent any inputs yet or it changes the number to negative if it shouldnt be an operator
+            else if (buttonContent == "-" && isNewEntry && (!firstNumber.HasValue || currentOperator != "") && !chaining)
             {
-                string content = "0";
-
-                if (!content.StartsWith("-"))
-                {
-                    result_label.Content = "-" + content;
-                }
+                result_label.Content = "-0";
+                isNewEntry = false;
             }
             else if (tag == "op")
             {
-                firstNumber = double.Parse(result_label.Content.ToString());
+                // Check if there was an error last time
+                if (!double.TryParse(result_label.Content.ToString(), out double secondNumber))
+                {
+                    return;
+                }
+
+                // If we want to chain calculations then changes the first number to the last result
+                if (isNewEntry)
+                {
+                    if (currentOperator != "")
+                    {
+                        // If in the chaining an error occurs
+                        if (OperationValidation(secondNumber, currentOperator))
+                        {
+                            return;
+                        }
+                        firstNumber = Calculate(firstNumber.Value, secondNumber, currentOperator);
+                        if (firstNumber == -0)
+                        {
+                            firstNumber = 0;
+                        }
+                        chaining = true;
+                    }
+                    else
+                    {
+                        firstNumber = result;
+                    }
+                }
+                else
+                {
+                    // If we want to chain operations then this will calculate the previous and do print out the next one
+                    if (currentOperator != "")
+                    {
+                        // If in the chaining an error occurs
+                        if (OperationValidation(secondNumber, currentOperator))
+                        {
+                            return;
+                        }
+                        firstNumber = Calculate(firstNumber.Value, secondNumber, currentOperator);
+                        if (firstNumber == -0)
+                        {
+                            firstNumber = 0;
+                        }
+                        chaining = true;
+                    }
+                    else
+                    {
+                        firstNumber = secondNumber;
+                    }
+                }
+
                 currentOperator = buttonContent;
 
                 // If else block for special operators that need different expressions
@@ -106,9 +158,8 @@ public partial class MainWindow : Window
                 }
                 else
                 {
-                    expression_label.Content = $"{firstNumber} {buttonContent}";
+                    expression_label.Content = $"{firstNumber} {currentOperator}";
                 }
-
                 isNewEntry = true;
             }
             else if (tag == "equals")
@@ -121,15 +172,18 @@ public partial class MainWindow : Window
                     // Validate operations like dividing by zero
                     if (OperationValidation(secondNumber, currentOperator))
                     {
-                        expression_label.Content = $"{firstNumber} {currentOperator} {secondNumber} =";
-                        firstNumber = null;
-                        currentOperator = "";
-                        isNewEntry = true;
                         return;
                     }
 
                     // If the operation is valid, calculate the result
-                    double result = Calculate(firstNumber.Value, secondNumber, currentOperator);
+                    result = Calculate(firstNumber.Value, secondNumber, currentOperator);
+
+                    // For the UI change the -0 value to 0
+                    if (result == -0)
+                    {
+                        result = 0;
+                    }
+
                     result_label.Content = result.ToString();
 
                     // If else block for special operators that need different expressions
@@ -149,26 +203,42 @@ public partial class MainWindow : Window
                     firstNumber = result;
                     currentOperator = "";
                     isNewEntry = true;
+                    chaining = false;
                 }
             }
             else if (tag == "opSpecial")
             {
-                double value = double.Parse(result_label.Content.ToString());
+                // Check if there was an error last time
+                if(!double.TryParse(result_label.Content.ToString(), out double value))
+                {
+                    return;
+                }
+
 
                 // Validate if there are invalid operations like negative factorials
                 if (OperationValidation(value, buttonContent))
                 {
-                    expression_label.Content = SpecialOperatorLabel(value, buttonContent);
-                    isNewEntry = true;
-                    firstNumber = null;
                     return;
                 }
 
                 // If the operatorin is valid calculate the result
-                double result = CalculateSpecial(value, buttonContent);
-                
+                result = CalculateSpecial(value, buttonContent);
+
+                // If we want chain with special operators
+                if (firstNumber != null)
+                {
+                    result = Calculate(firstNumber.Value, result, currentOperator);
+                    expression_label.Content = $"{SpecialOperatorLabel(value, buttonContent)}";
+                }
+                else 
+                {
+                    expression_label.Content = $"{SpecialOperatorLabel(value, buttonContent)}";
+                }
+
                 result_label.Content = result.ToString();
-                expression_label.Content = SpecialOperatorLabel(value, buttonContent);
+
+                firstNumber = result;
+                currentOperator = "";
                 isNewEntry = true;
             }
             else if (tag == "Clr")
@@ -179,6 +249,8 @@ public partial class MainWindow : Window
                 firstNumber = null;
                 currentOperator = "";
                 isNewEntry = true;
+                chaining = false;
+                result = 0;
             }
             else if (tag == "Del")
             {
@@ -221,17 +293,31 @@ public partial class MainWindow : Window
     {
         if (op == "/" && value == 0)
         {
+            expression_label.Content = $"{firstNumber} / 0 =";
             result_label.Content = "Cannot divide by zero";
+            firstNumber = null;
+            currentOperator = "";
+            isNewEntry = true;
+            result = 0;
             return true;
         }
-        else if (op == "!" && (value < 0 || value != (int)value))
+        else if (op == "!" && (value < 0 || value > 65 || value != (int)value))
         {
-            result_label.Content = "Invalid factorial";
+            expression_label.Content = SpecialOperatorLabel(value, op);
+            result_label.Content = "Invalid";
+            isNewEntry = true;
+            firstNumber = null;
+            result = 0;
+
             return true;
         }
         else if (op == "ln" && value <= 0)
         {
-            result_label.Content = "Invalid logarithm";
+            expression_label.Content = SpecialOperatorLabel(value, op);
+            result_label.Content = "Invalid";
+            isNewEntry = true;
+            firstNumber = null;
+            result = 0;
             return true;
         }
         return false;
@@ -247,8 +333,8 @@ public partial class MainWindow : Window
     {
         return op switch
         {
-            "!" => $"fac({value})",
-            "ln" => $"ln({value})",
+            "!" => $"fac({value}) =",
+            "ln" => $"ln({value}) =",
             _ => value.ToString()
         };
     }
