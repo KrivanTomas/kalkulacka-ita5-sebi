@@ -21,6 +21,8 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         InitializeComponent();
     }
     
@@ -70,7 +72,7 @@ public partial class MainWindow : Window
                 result_label.Content = content;
                 isNewEntry = false;
             }
-            else if (tag == "dot")
+            else if (tag == "dot" && currentOperator != "xⁿ")
             {
                 string content = result_label.Content.ToString();
 
@@ -96,7 +98,7 @@ public partial class MainWindow : Window
             else if (tag == "op")
             {
                 // Check if there was an error last time
-                if (!double.TryParse(result_label.Content.ToString(), CultureInfo.InvariantCulture, out double secondNumber))
+                if (!double.TryParse(result_label.Content.ToString(), out double secondNumber))
                 {
                     return;
                 }
@@ -168,7 +170,7 @@ public partial class MainWindow : Window
                 // If we have two numbers and an operator
                 if (firstNumber.HasValue && !string.IsNullOrEmpty(currentOperator))
                 {
-                    double secondNumber = double.Parse(result_label.Content.ToString(), CultureInfo.InvariantCulture);
+                    double secondNumber = double.Parse(result_label.Content.ToString());
 
                     // Validate operations like dividing by zero
                     if (OperationValidation(secondNumber, currentOperator))
@@ -185,16 +187,16 @@ public partial class MainWindow : Window
                         result = 0;
                     }
 
-                    result_label.Content = result.ToString(CultureInfo.InvariantCulture);
+                    result_label.Content = result.ToString();
 
                     // If else block for special operators that need different expressions
                     if (currentOperator == "xⁿ")
                     {
-                        expression_label.Content += $"{secondNumber})";
+                        expression_label.Content += $" {secondNumber})";
                     }
                     else if (currentOperator == "ⁿ√")
                     {
-                        expression_label.Content += $"{secondNumber})";
+                        expression_label.Content += $" {secondNumber})";
                     }
                     else
                     {
@@ -210,7 +212,7 @@ public partial class MainWindow : Window
             else if (tag == "opSpecial")
             {
                 // Check if there was an error last time
-                if(!double.TryParse(result_label.Content.ToString(), CultureInfo.InvariantCulture, out double value))
+                if(!double.TryParse(result_label.Content.ToString(), out double value))
                 {
                     return;
                 }
@@ -236,7 +238,7 @@ public partial class MainWindow : Window
                     expression_label.Content = $"{SpecialOperatorLabel(value, buttonContent)}";
                 }
 
-                result_label.Content = result.ToString(CultureInfo.InvariantCulture);
+                result_label.Content = result.ToString();
 
                 firstNumber = result;
                 currentOperator = "";
@@ -336,7 +338,7 @@ public partial class MainWindow : Window
         {
             "!" => $"fac({value}) =",
             "ln" => $"ln({value}) =",
-            _ => value.ToString(CultureInfo.InvariantCulture)
+            _ => value.ToString()
         };
     }
 
