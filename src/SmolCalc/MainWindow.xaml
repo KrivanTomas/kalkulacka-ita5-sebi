@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmolCalc"
         mc:Ignorable="d"
-        Title="Kalkulačka ITA5+Sebi" Height="479" Width="333" Background="White" Icon="/logo01.png" MinWidth="200" MinHeight="300" SizeChanged="Window_SizeChanged">
+        Title="Kalkulačka ITA5+Sebi" Height="479" Width="333" Background="White" Icon="/logo01.png" MinWidth="200" MinHeight="300" SizeChanged="Window_SizeChanged" TextInput="Window_TextInput">
     <Window.Resources>
         <Style TargetType="Button">
             <Style.Resources>
@@ -71,13 +71,13 @@
             <Button Content="=" Grid.Row="4" Grid.Column="4" Tag="equals" Click="ButtonClick" Background="#FFFF7373" Foreground="White" FontWeight="Bold" ToolTip="Vypočítat zadaný výraz"/>
 
             <Button Content="Del" Grid.Row="0" Grid.Column="3" Tag="Del" Click="ButtonClick" ToolTip="Smaže posledně zadaný znak"/>
-            <Button Content="Clr" Grid.Row="0" Grid.Column="2" Tag="Clr" Click="ButtonClick" ToolTip="Smaže celý vstup a výstup"/>
+            <Button Content="Clr" Grid.Row="0" Grid.Column="2" Tag="Clr" Click="ButtonClick" ToolTip="Smaže celý vstup a výstup\nPísmeno 'c'"/>
             <Button Content="." Grid.Row="4" Grid.Column="2" Tag="dot" Click="ButtonClick" ToolTip="Desetinná tečka"/>
 
             <Button Content="!" Grid.Row="1" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Faktoriál z čísla na aktuálním vstupu"/>
             <Button Content="xⁿ" Grid.Row="2" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Mocnina s přirozeným exponentem"/>
-            <Button Content="ⁿ√" Grid.Row="3" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Obecná Odmocnina"/>
-            <Button Content="ln" Grid.Row="4" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Naturální logaritmus (logaritmus o základu e)"/>
+            <Button Content="ⁿ√" Grid.Row="3" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Obecná Odmocnina\nPísmeno 'r'"/>
+            <Button Content="ln" Grid.Row="4" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Naturální logaritmus (logaritmus o základu e)\nPísmeno 'l'"/>
         </Grid>
     </Grid>
 </Window>
