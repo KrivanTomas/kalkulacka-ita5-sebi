@@ -49,6 +49,7 @@ namespace StandardDeviationCalculator
                     if (setNegative)
                         readNum *= -1;
 
+                    //whole number is read, add to sums and reset flags
                     sum = MathLib.Add(sum, readNum);
                     sumOfPower2 = MathLib.Add(sumOfPower2, MathLib.Pow(readNum, 2));
                     readNum = 0;
@@ -67,21 +68,19 @@ namespace StandardDeviationCalculator
                 return 1;
             }
 
-            //úprava vzorců: N*(xavg)^2 <=> (N*(xsum)^2)/(N^2) <=> (xsum^2)/N
             double s = CalculateStandardDeviation(sum, sumOfPower2, numCount);
             Console.WriteLine(s);
             return 0;
         }
 
-        /**
-         * <summary> Calculates the Standard Deviation from sums of numbers </summary>
-         * <param name="sum">Sum of all numbers</param> 
-         * <param name="powerSum">Sum of powers of 2 of all numbers individually</param>
-         * <param name="n">Count of numbers</param>
-         * <returns>Resulting Standard Deviation of type double</returns>
-         */
+         /// <summary>Calculates the Standard Deviation from sums of numbers</summary>
+         /// <param name="sum">Sum of all numbers</param> 
+         /// <param name="powerSum">Sum of powers of 2 of all numbers individually</param>
+         /// <param name="n">Count of numbers</param>
+         /// <returns>Resulting Standard Deviation of type double</returns>
         public static double CalculateStandardDeviation(double sum, double powerSum, int n)
         {
+            //simplified equation: N*(xavg)^2 <=> (N*(xsum)^2)/(N^2) <=> (xsum^2)/N
             double avg = MathLib.Div(MathLib.Pow(sum, 2), n);
             return MathLib.Root(MathLib.Div(MathLib.Sub(powerSum, avg), n - 1), 2);
         }
