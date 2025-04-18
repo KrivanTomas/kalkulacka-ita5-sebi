@@ -29,7 +29,7 @@
             <RowDefinition Height="298*"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="calc_mode_label" Content="Běžná kalkulačka" Grid.Row="0" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold"/>
+        <Label x:Name="calc_mode_label" Content="Běžná kalkulačka" Grid.Row="0" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold" ToolTip="Aktuální režim kalkulačky"/>
         <Label x:Name="expression_label" Content="" FontFamily="Consolas" Foreground="Black" FontSize="20" HorizontalContentAlignment="Right" Margin="0,33,0,0" Grid.RowSpan="3"/>
         <Label x:Name="result_label" Content="0" FontFamily="Consolas" Foreground="Black" FontSize="42" HorizontalContentAlignment="Right" Grid.Row="2" Margin="0,2,0,0"/>
 
@@ -63,20 +63,20 @@
             <Button Content="9" Grid.Row="3" Grid.Column="2" Tag="num" Click="ButtonClick"/>
             <Button Content="0" Grid.Row="4" Grid.Column="1" Tag="num" Click="ButtonClick"/>
 
-            <Button Content="+" Grid.Row="0" Grid.Column="4" Tag="op" Click="ButtonClick"/>
-            <Button Content="-" Grid.Row="1" Grid.Column="4" Tag="op" Click="ButtonClick"/>
-            <Button Content="×" Grid.Row="2" Grid.Column="4" Tag="op" Click="ButtonClick"/>
-            <Button Content="/" Grid.Row="3" Grid.Column="4" Tag="op" Click="ButtonClick"/>
-            <Button Content="=" Grid.Row="4" Grid.Column="4" Tag="equals" Click="ButtonClick" Background="#FFFF7373" Foreground="White" FontWeight="Bold"/>
+            <Button Content="+" Grid.Row="0" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Sčítání"/>
+            <Button Content="-" Grid.Row="1" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Odečítání"/>
+            <Button Content="×" Grid.Row="2" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Násobení"/>
+            <Button Content="/" Grid.Row="3" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Dělení"/>
+            <Button Content="=" Grid.Row="4" Grid.Column="4" Tag="equals" Click="ButtonClick" Background="#FFFF7373" Foreground="White" FontWeight="Bold" ToolTip="Vypočítat zadaný výraz"/>
 
-            <Button Content="Del" Grid.Row="0" Grid.Column="3" Tag="Del" Click="ButtonClick"/>
-            <Button Content="Clr" Grid.Row="0" Grid.Column="2" Tag="Clr" Click="ButtonClick"/>
-            <Button Content="." Grid.Row="4" Grid.Column="2" Tag="dot" Click="ButtonClick"/>
+            <Button Content="Del" Grid.Row="0" Grid.Column="3" Tag="Del" Click="ButtonClick" ToolTip="Smaže posledně zadaný znak"/>
+            <Button Content="Clr" Grid.Row="0" Grid.Column="2" Tag="Clr" Click="ButtonClick" ToolTip="Smaže celý vstup a výstup"/>
+            <Button Content="." Grid.Row="4" Grid.Column="2" Tag="dot" Click="ButtonClick" ToolTip="Desetinná tečka"/>
 
-            <Button Content="!" Grid.Row="1" Grid.Column="3" Tag="opSpecial" Click="ButtonClick"/>
-            <Button Content="xⁿ" Grid.Row="2" Grid.Column="3" Tag="op" Click="ButtonClick"/>
-            <Button Content="ⁿ√" Grid.Row="3" Grid.Column="3" Tag="op" Click="ButtonClick"/>
-            <Button Content="ln" Grid.Row="4" Grid.Column="3" Tag="opSpecial" Click="ButtonClick"/>
+            <Button Content="!" Grid.Row="1" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Faktoriál z čísla na aktuálním vstupu"/>
+            <Button Content="xⁿ" Grid.Row="2" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Mocnina s přirozeným exponentem"/>
+            <Button Content="ⁿ√" Grid.Row="3" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Obecná Odmocnina"/>
+            <Button Content="ln" Grid.Row="4" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Naturální logaritmus (logaritmus o základu e)"/>
         </Grid>
     </Grid>
 </Window>
