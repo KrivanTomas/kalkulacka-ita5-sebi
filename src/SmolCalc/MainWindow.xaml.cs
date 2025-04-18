@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Eventing.Reader;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,9 +20,9 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
-        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
         InitializeComponent();
+        CultureInfo nonInvariantCulture = new CultureInfo("en-US");
+        Thread.CurrentThread.CurrentCulture = nonInvariantCulture;
     }
     
     private string currentOperator = "";
