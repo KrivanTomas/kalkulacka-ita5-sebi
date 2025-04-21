@@ -1,6 +1,8 @@
 using System.Globalization;
 using System.Text;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -463,4 +465,54 @@ public partial class MainWindow : Window
             setWindowResize = false;
         }//end resize
     }//end Window_SizeChanged function
+
+
+    /// <summary>
+    /// Called when text input is detected on any control.
+    /// Used for input using a keyboard.
+    /// </summary>
+    /// <param name="sender">MainWindow</param>
+    /// <param name="e">Parameters</param>
+    private void Window_TextInput(object sender, TextCompositionEventArgs e)
+    {
+        Grid buttonGrid = new Grid();
+        foreach(object o in ((Grid)this.Content).Children)
+        {
+            if (o is Grid)
+                buttonGrid = (Grid)o;
+        }
+
+        string buttonValue = "";
+        if (Char.IsNumber(e.Text[0]) || "+-/=.!".Contains(e.Text[0]))
+        {
+            buttonValue = e.Text;
+        }
+        switch (Convert.ToInt32(e.Text[0]))
+        {
+            case '*': buttonValue = "×"; break;
+            case '^': buttonValue = "xⁿ"; break;
+            case 'r': buttonValue = "ⁿ√"; break;
+            case 'l': buttonValue = "ln"; break;
+            case '.': buttonValue = "."; break;
+            case ',': buttonValue = "."; break;
+            case 13: buttonValue = "="; break; //enter
+            case 8: buttonValue = "Del"; break; //backspace
+            case 'c': buttonValue = "Clr"; break; //backspace
+        }
+        //if no action is matched, return
+        if(buttonValue == "")
+            return;
+        
+        foreach (object o in buttonGrid.Children)
+        {
+            if (o is Button b)
+            {
+                if(b.GetValue(ContentProperty).ToString() == buttonValue)
+                {
+                    //artificially click the coresponding button
+                    ButtonClick(b, e);
+                }
+            }
+        }
+    }
 }
