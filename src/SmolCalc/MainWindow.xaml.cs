@@ -25,11 +25,16 @@ public partial class MainWindow : Window
         Thread.CurrentThread.CurrentCulture = nonInvariantCulture;
     }
     
+    //calculator properties
     private string currentOperator = "";
     private double? firstNumber = null;
     private bool isNewEntry = false;
     private double result = 0;
     private bool chaining = false;
+
+    //window resizing properties
+    bool setWindowResize = false;
+    bool isWindowMinimumSize = false;
 
     /// <summary>
     /// When a button is clicked this function processes it 
@@ -379,4 +384,83 @@ public partial class MainWindow : Window
             _ => secondNumber
         };
     }
+
+    /// <summary>
+    /// Called when the window is resized.
+    /// Used for changed the application controls
+    /// based on breakpoints.
+    /// </summary>
+    /// <param name="sender">MainWindow</param>
+    /// <param name="e">Arguments</param>
+    private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        Window win = (MainWindow)sender;
+        if(win.Height < 430 && !isWindowMinimumSize)
+        {
+            setWindowResize = true;
+            isWindowMinimumSize = true;
+        }
+        if(win.Height >= 430 && isWindowMinimumSize)
+        {
+            setWindowResize = true;
+            isWindowMinimumSize = false;
+        }
+
+        if (setWindowResize)
+        {
+            Grid grid = (Grid)win.Content;
+            if (!isWindowMinimumSize) //window is now big
+            {
+                foreach (object o in grid.Children)
+                {
+                    if (o is Label)
+                    {
+                        Label l = (Label)o;
+                        if (l.Name == "calc_mode_label")
+                        {
+                            l.IsEnabled = true;
+                            l.Visibility = Visibility.Visible;
+                        }
+                        if (l.Name == "expression_label")
+                        {
+                            l.SetValue(Grid.RowProperty, 1);
+
+                        }
+                        if (l.Name == "result_label")
+                        {
+                            l.SetValue(Grid.RowProperty, 3);
+                            l.SetValue(Grid.RowSpanProperty, 1);
+                        }
+                    }
+                }
+            }
+            else //window is now small
+            {
+                foreach (object o in grid.Children)
+                {
+                    if (o is Label)
+                    {
+                        Label l = (Label)o;
+                        if (l.Name == "calc_mode_label")
+                        {
+                            l.IsEnabled = false;
+                            l.Visibility = Visibility.Hidden;
+                        }
+                        if (l.Name == "expression_label")
+                        {
+                            l.SetValue(Grid.RowProperty, 0);
+
+                        }
+                        if (l.Name == "result_label")
+                        {
+                            l.SetValue(Grid.RowProperty, 2);
+                            l.SetValue(Grid.RowSpanProperty, 2);
+
+                        }
+                    }
+                }
+            }//end property setting
+            setWindowResize = false;
+        }//end resize
+    }//end Window_SizeChanged function
 }
