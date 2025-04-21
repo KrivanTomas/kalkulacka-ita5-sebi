@@ -1,24 +1,40 @@
+PACK_NAME = "xkrivat00_xhavlap00_xkurtil00_xkunseb00"
 
-all:
-	dotnet build ./SmolCalc/
+
+.PHONY: all
+all: smolcalc stddev
 	
-pack: clean
-	#dotnet build <project-installer>
-	#tar/zip/7z???
+smolcalc: 
+	dotnet build ./SmolCalc/ -c Release
 
+.PHONY: pack
+pack: clean
+	cd ..; mkdir $(PACK_NAME); cd $(PACK_NAME); mkdir repo; mkdir doc; mkdir `install
+	cd ..; cp ./* ./.* ./$(PACK_NAME)/repo; cp -r ./plan ./src ./profiling ./mockup ./.git ./$(PACK_NAME)/repo
+
+	cd ..; zip $(PACK_NAME).zip $(PACK_NAME) 
+	cd ..; rm -rf ./$(PACK_NAME)
+
+.PHONY: clean
 clean:
 	rm -rf ./*/bin/ ./*/obj/ ../.vs */.vs ../repo.zip
-	#git clean ?
+	cd ./../; git clean -f
 
+.PHONY: test
 test:
-	dotnet test ./SmolMathLibTests/
+	dotnet test ./SmolMathLibTests/ -c Release
 
+.PHONY: run
 run:
-	dotnet run --project ./SmolCalc/
+	dotnet run --project ./SmolCalc/ -c Release
 
-stddev:
-	# Not yet implemented
+stddev: stddev-build
+	cat ./StandardDeviationCalculator/testFiles/input1.txt | ./StandardDeviationCalculator/bin/Release/net8.0-windows/stddev.exe
 
+stddev-build:
+	dotnet build ./StandardDeviationCalculator -c Release
+
+.PHONY: help
 help:
 	# Make sure you have .NET Core 8.0.x and .NET SDK 9.0.201 or newer installed
 	# https://aka.ms/dotnet/download
