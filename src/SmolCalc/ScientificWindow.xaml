@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmolCalc"
         mc:Ignorable="d"
-        Title="ScientificWindow" Height="450" Width="800">
+        Title="ScientificWindow" Height="447" Width="450">
     <Window.Resources>
         <Style TargetType="Button">
             <Style.Resources>
@@ -20,6 +20,7 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
+        
     </Window.Resources>
     <Grid Margin="10,10,10,10">
         <Grid.RowDefinitions>
@@ -30,13 +31,15 @@
             <RowDefinition Height="296*"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="calc_mode_label" Content="Běžná kalkulačka" Grid.Row="0" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold" ToolTip="Aktuální režim kalkulačky"/>
-        <Label x:Name="expression_label" Content="" FontFamily="Consolas" Foreground="Black" FontSize="20" HorizontalContentAlignment="Right" Grid.Row="1" Grid.RowSpan="2"/>
-        <Label x:Name="result_label" Content="0" FontFamily="Consolas" Foreground="Black" FontSize="42" HorizontalContentAlignment="Right" Grid.Row="3" Margin="0,2,0,0"/>
+        <Label x:Name="calc_mode_label" Content="Vědecká kalkulačka" Grid.Row="0" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold" ToolTip="Aktuální režim kalkulačky"/>
+        <Label x:Name="expression_label" Content="Sin(e)×Rand" FontFamily="Consolas" Foreground="Black" FontSize="20" HorizontalContentAlignment="Right" Grid.Row="1" Grid.RowSpan="2"/>
+        <Label x:Name="result_label" Content="0.2371258" FontFamily="Consolas" Foreground="Black" FontSize="42" HorizontalContentAlignment="Right" Grid.Row="3" Margin="0,2,0,0"/>
 
         <Grid Grid.Row="4" Margin="0,0,0,0">
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -53,31 +56,48 @@
 
 
 
-            <Button Content="1" Grid.Row="1" Grid.Column="0" Tag="num" Click="ButtonClick"/>
-            <Button Content="2" Grid.Row="1" Grid.Column="1" Tag="num" Click="ButtonClick"/>
-            <Button Content="3" Grid.Row="1" Grid.Column="2" Tag="num" Click="ButtonClick"/>
-            <Button Content="4" Grid.Row="2" Grid.Column="0" Tag="num" Click="ButtonClick"/>
-            <Button Content="5" Grid.Row="2" Grid.Column="1" Tag="num" Click="ButtonClick"/>
-            <Button Content="6" Grid.Row="2" Grid.Column="2" Tag="num" Click="ButtonClick"/>
-            <Button Content="7" Grid.Row="3" Grid.Column="0" Tag="num" Click="ButtonClick"/>
-            <Button Content="8" Grid.Row="3" Grid.Column="1" Tag="num" Click="ButtonClick"/>
-            <Button Content="9" Grid.Row="3" Grid.Column="2" Tag="num" Click="ButtonClick"/>
-            <Button Content="0" Grid.Row="4" Grid.Column="1" Tag="num" Click="ButtonClick"/>
+            <Button Content="1" Grid.Row="1" Grid.Column="3" Tag="num" />
+            <Button Content="2" Grid.Row="1" Grid.Column="4" Tag="num" />
+            <Button Content="3" Grid.Row="1" Grid.Column="5" Tag="num" />
+            <Button Content="4" Grid.Row="2" Grid.Column="3" Tag="num" />
+            <Button Content="5" Grid.Row="2" Grid.Column="4" Tag="num" />
+            <Button Content="6" Grid.Row="2" Grid.Column="5" Tag="num" />
+            <Button Content="7" Grid.Row="3" Grid.Column="3" Tag="num" />
+            <Button Content="8" Grid.Row="3" Grid.Column="4" Tag="num" />
+            <Button Content="9" Grid.Row="3" Grid.Column="5" Tag="num" />
+            <Button Content="0" Grid.Row="4" Grid.Column="4" Tag="num" />
 
-            <Button Content="+" Grid.Row="0" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Sčítání"/>
-            <Button Content="-" Grid.Row="1" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Odečítání"/>
-            <Button Content="×" Grid.Row="2" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Násobení"/>
-            <Button Content="/" Grid.Row="3" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Dělení"/>
-            <Button Content="=" Grid.Row="4" Grid.Column="4" Tag="equals" Click="ButtonClick" Background="#FFFF7373" Foreground="White" FontWeight="Bold" ToolTip="Vypočítat zadaný výraz"/>
+            <Button Content="+" Grid.Row="0" Grid.Column="6" Tag="op"  ToolTip="Sčítání"/>
+            <Button Content="-" Grid.Row="1" Grid.Column="6" Tag="op"  ToolTip="Odečítání"/>
+            <Button Content="×" Grid.Row="2" Grid.Column="6" Tag="op"  ToolTip="Násobení"/>
+            <Button Content="/" Grid.Row="3" Grid.Column="6" Tag="op"  ToolTip="Dělení"/>
+            <Button Content="=" Grid.Row="4" Grid.Column="6" Tag="equals"  Background="#FFFF7373" Foreground="White" FontWeight="Bold" ToolTip="Vypočítat zadaný výraz"/>
 
-            <Button Content="Del" Grid.Row="0" Grid.Column="3" Tag="Del" Click="ButtonClick" ToolTip="Smaže posledně zadaný znak"/>
-            <Button Content="Clr" Grid.Row="0" Grid.Column="2" Tag="Clr" Click="ButtonClick" ToolTip="Smaže celý vstup a výstup&#x0a;Písmeno 'c'"/>
-            <Button Content="." Grid.Row="4" Grid.Column="2" Tag="dot" Click="ButtonClick" ToolTip="Desetinná tečka"/>
+            <Button Content="Del" Grid.Row="0" Grid.Column="5" Tag="Del"  ToolTip="Smaže posledně zadaný znak"/>
+            <Button Content="Clr" Grid.Row="0" Grid.Column="4" Tag="Clr"  ToolTip="Smaže celý vstup a výstup&#x0a;Písmeno 'c'"/>
+            <Button Content="." Grid.Row="4" Grid.Column="5" Tag="dot"  ToolTip="Desetinná tečka"/>
+            <Button Content="+/-" Grid.Row="4" Grid.Column="3" Tag="dot"  ToolTip="Desetinná tečka"/>
 
-            <Button Content="!" Grid.Row="1" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Faktoriál z čísla na aktuálním vstupu"/>
-            <Button Content="xⁿ" Grid.Row="2" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Mocnina s přirozeným exponentem&#x0a;Znak '^'"/>
-            <Button Content="ⁿ√" Grid.Row="3" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Obecná Odmocnina&#x0a;Písmeno 'r'"/>
-            <Button Content="ln" Grid.Row="4" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Naturální logaritmus (logaritmus o základu e)&#x0a;Písmeno 'l'"/>
+            <Button Content="!" Grid.Row="1" Grid.Column="0" Tag="opSpecial"  ToolTip="Faktoriál z čísla na aktuálním vstupu"/>
+            <Button Content="xⁿ" Grid.Row="1" Grid.Column="2" Tag="op"  ToolTip="Mocnina s přirozeným exponentem&#x0a;Znak '^'"/>
+            <Button Content="ⁿ√" Grid.Row="2" Grid.Column="2" Tag="op"  ToolTip="Obecná Odmocnina&#x0a;Písmeno 'r'"/>
+            <Button Content="ln" Grid.Row="3" Grid.Column="1" Tag="opSpecial"  ToolTip="Naturální logaritmus (logaritmus o základu e)&#x0a;Písmeno 'l'"/>
+            <Button Content="logₙ" Grid.Row="4" Grid.Column="1" Tag="opSpecial" />
+
+            <Button Content="Sin" Grid.Row="0" Grid.Column="0" Tag="opSpecial" />
+            <Button Content="Cos" Grid.Row="0" Grid.Column="1" Tag="opSpecial" />
+            <Button Content="Tg" Grid.Row="1" Grid.Column="0" Tag="opSpecial" />
+            <Button Content="Cotg" Grid.Row="1" Grid.Column="1" Tag="opSpecial" />
+
+            <Button Content="|x|" Grid.Row="4" Grid.Column="2" Tag="opSpecial" />
+            <Button Content="(" Grid.Row="0" Grid.Column="2" Tag="opSpecial" />
+            <Button Content=")" Grid.Row="0" Grid.Column="3" Tag="opSpecial" />
+            <Button Content="Mod" Grid.Row="3" Grid.Column="0" Tag="opSpecial" />
+            <Button Content="1/x" Grid.Row="3" Grid.Column="2" Tag="opSpecial" />
+            <Button Content="e" Grid.Row="2" Grid.Column="0" Tag="opSpecial" />
+            <Button Content="π" Grid.Row="2" Grid.Column="1" Tag="opSpecial" />
+            <Button Content="Rand" Grid.Row="4" Grid.Column="0" Tag="opSpecial" />
+
         </Grid>
     </Grid>
 </Window>

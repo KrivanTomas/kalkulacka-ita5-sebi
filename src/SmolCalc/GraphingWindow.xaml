@@ -52,15 +52,15 @@
         <Canvas Grid.Row="1" Grid.ColumnSpan="3" Background="#FFE9E9E9"/>
 
         <Ellipse Grid.Row="2" Margin="0,7,0,8" Fill="Red"></Ellipse>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="y=x²+sin(x)" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold"></TextBox>
         <Button Content="Hide" Grid.Row="2" Grid.Column="2" Margin="5"></Button>
 
         <Ellipse Grid.Row="3" Margin="0,7,0,8" Fill="Blue"></Ellipse>
-        <TextBox Grid.Row="3" Grid.Column="1" Margin="5"></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="y=ln(x)+1" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold"></TextBox>
         <Button Content="Hide" Grid.Row="3" Grid.Column="2" Margin="5"></Button>
 
         <Ellipse Grid.Row="4" Margin="0,7,0,8" Fill="Green"></Ellipse>
-        <TextBox Grid.Row="4" Grid.Column="1" Margin="5"></TextBox>
-        <Button Content="Hide" Grid.Row="41" Grid.Column="2" Margin="5"></Button>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Text="y=x" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold"></TextBox>
+        <Button Content="Show" Grid.Row="41" Grid.Column="2" Margin="5"></Button>
     </Grid>
 </Window>
