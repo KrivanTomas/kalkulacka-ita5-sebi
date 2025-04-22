@@ -1,0 +1,66 @@
+﻿<Window x:Class="SmolCalc.GraphingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmolCalc"
+        mc:Ignorable="d"
+        Title="GraphingWindow" Height="479" Width="333">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+
+            </Style.Resources>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Background" Value="#FFE2E2E2"/>
+            <Setter Property="BorderThickness" Value=".5"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Name="calc_mode_burger" Margin="0,5,0,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Ellipse Fill="DarkGray"/>
+            <Ellipse Fill="DarkGray" Grid.Row="2"/>
+            <Ellipse Fill="DarkGray" Grid.Row="4"/>
+        </Grid>
+        <Label x:Name="calc_mode_label" Content="Vykreslení grafů" Grid.Row="0" Grid.Column="1" FontFamily="Consolas" Foreground="Black" FontSize="14" FontWeight="SemiBold" Grid.ColumnSpan="2"/>
+
+        <Canvas Grid.Row="1" Grid.ColumnSpan="3" Background="#FFE9E9E9"/>
+
+        <Ellipse Grid.Row="2" Margin="0,7,0,8" Fill="Red"></Ellipse>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5"></TextBox>
+        <Button Content="Hide" Grid.Row="2" Grid.Column="2" Margin="5"></Button>
+
+        <Ellipse Grid.Row="3" Margin="0,7,0,8" Fill="Blue"></Ellipse>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5"></TextBox>
+        <Button Content="Hide" Grid.Row="3" Grid.Column="2" Margin="5"></Button>
+
+        <Ellipse Grid.Row="4" Margin="0,7,0,8" Fill="Green"></Ellipse>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5"></TextBox>
+        <Button Content="Hide" Grid.Row="41" Grid.Column="2" Margin="5"></Button>
+    </Grid>
+</Window>
