@@ -1,3 +1,4 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35828.75
@@ -11,6 +12,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmolMathLibTests", "..\SmolMathLibTests\SmolMathLibTests.csproj", "{78B74F73-95AB-4F1E-B67B-898A070DF7BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandardDeviationCalculator", "..\StandardDeviationCalculator\StandardDeviationCalculator.csproj", "{394CE043-920C-405E-99EA-DB612A15CF09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Položky řešení", "Položky řešení", "{73E6DEBC-5D85-E032-7380-14D1E53616C6}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
