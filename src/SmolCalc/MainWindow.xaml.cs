@@ -74,7 +74,10 @@ public partial class MainWindow : Window
                     // Append the new digit to the current number
                     content += buttonContent;
                 }
-
+                if(currentOperator == "")
+                {
+                    expression_label.Content = "";
+                }
                 result_label.Content = content;
                 isNewEntry = false;
             }
@@ -91,13 +94,20 @@ public partial class MainWindow : Window
                 {
                     content += ".";
                 }
-
+                if (currentOperator == "")
+                {
+                    expression_label.Content = "";
+                }
                 result_label.Content = content;
                 isNewEntry = false;
             }
             // If there werent any inputs yet or it changes the number to negative if it shouldnt be an operator
             else if (buttonContent == "-" && isNewEntry && (!firstNumber.HasValue || currentOperator != "") && !chaining)
             {
+                if (currentOperator == "")
+                {
+                    expression_label.Content = "";
+                }
                 result_label.Content = "-0";
                 isNewEntry = false;
             }
