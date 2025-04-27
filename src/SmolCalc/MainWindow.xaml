@@ -70,14 +70,14 @@
             <Button Content="/" Grid.Row="3" Grid.Column="4" Tag="op" Click="ButtonClick" ToolTip="Dělení"/>
             <Button Content="=" Grid.Row="4" Grid.Column="4" Tag="equals" Click="ButtonClick" Background="#FFFF7373" Foreground="White" FontWeight="Bold" ToolTip="Vypočítat zadaný výraz"/>
 
-            <Button Content="Del" Grid.Row="0" Grid.Column="3" Tag="Del" Click="ButtonClick" ToolTip="Smaže posledně zadaný znak"/>
+            <Button Content="Del" Grid.Row="0" Grid.Column="3" Tag="Del" Click="ButtonClick" ToolTip="Smaže posledně zadaný znak&#x0a;Klávesa 'Backspace'"/>
             <Button Content="Clr" Grid.Row="0" Grid.Column="2" Tag="Clr" Click="ButtonClick" ToolTip="Smaže celý vstup a výstup"/>
-            <Button Content="." Grid.Row="4" Grid.Column="2" Tag="dot" Click="ButtonClick" ToolTip="Desetinná tečka"/>
+            <Button Content="." Grid.Row="4" Grid.Column="2" Tag="dot" Click="ButtonClick" ToolTip="Desetinná čárka"/>
 
             <Button Content="!" Grid.Row="1" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Faktoriál z čísla na aktuálním vstupu"/>
             <Button Content="xⁿ" Grid.Row="2" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Mocnina s přirozeným exponentem"/>
             <Button Content="ⁿ√" Grid.Row="3" Grid.Column="3" Tag="op" Click="ButtonClick" ToolTip="Obecná Odmocnina"/>
-            <Button Content="ln" Grid.Row="4" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Naturální logaritmus (logaritmus o základu e)"/>
+            <Button Content="ln" Grid.Row="4" Grid.Column="3" Tag="opSpecial" Click="ButtonClick" ToolTip="Přirozený logaritmus (logaritmus o základu e)&#x0a;Písmeno 'l'"/>
         </Grid>
     </Grid>
 </Window>
