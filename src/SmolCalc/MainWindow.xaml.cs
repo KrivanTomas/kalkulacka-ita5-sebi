@@ -81,7 +81,7 @@ public partial class MainWindow : Window
                 result_label.Content = content;
                 isNewEntry = false;
             }
-            else if (tag == "dot" && currentOperator != "xⁿ")
+            else if (tag == "dot" && currentOperator != "xⁿ" && currentOperator != "ⁿ√")
             {
                 string content = result_label.Content.ToString();
 
@@ -320,7 +320,7 @@ public partial class MainWindow : Window
             result = 0;
             return true;
         }
-        else if (op == "!" && (value < 0 || value > 22 || value != (int)value))
+        else if (op == "!" && (value < 0 || value > 20 || value != (int)value))
         {
             expression_label.Content = SpecialOperatorLabel(value, op);
             result_label.Content = "Invalid";
