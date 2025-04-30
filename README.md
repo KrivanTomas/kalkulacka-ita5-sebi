@@ -2,6 +2,8 @@
 
 Kalkulačka v WFP .NET 8.0
 
+![SmolCalc GUI screenshot](screenshot.png)
+
 Prostředí
 ---------
 
