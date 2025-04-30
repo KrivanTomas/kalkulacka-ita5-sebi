@@ -6,7 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>stddev</AssemblyName>
+    <ApplicationIcon>logo-stddev.ico</ApplicationIcon>
+    <NuGetAuditMode>all</NuGetAuditMode>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="logo-stddev.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SmolMathLib\SmolMathLib.csproj" />
