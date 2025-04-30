@@ -22,7 +22,6 @@ namespace SmolMathLibTests
             for(int i = 0; i <= maxFactorialTest; i++, n*=Convert.ToUInt64(i))
             {
                 Assert.That(MathLib.Fac(i), Is.EqualTo(n));
-                Console.WriteLine(i + ": " + n);
             }
         }
 
