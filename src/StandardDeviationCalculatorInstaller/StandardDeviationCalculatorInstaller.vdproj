@@ -101,36 +101,6 @@
                     "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 a x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.7.2"
                     }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.9.0.Arm64"
-                    {
-                    "Name" = "8:Modul runtime .NET 9.0.3 (Arm64)"
-                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.9.0.Arm64"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.9.0.x64"
-                    {
-                    "Name" = "8:Modul runtime .NET 9.0.3 (x64)"
-                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.9.0.x64"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.9.0.x86"
-                    {
-                    "Name" = "8:Modul runtime .NET 9.0.3 (x86)"
-                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.9.0.x86"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.Arm64"
-                    {
-                    "Name" = "8:Modul runtime .NET Desktop 9.0.3 (Arm64)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.Arm64"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.x64"
-                    {
-                    "Name" = "8:Modul runtime .NET Desktop 9.0.3 (x64)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.x64"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.x86"
-                    {
-                    "Name" = "8:Modul runtime .NET Desktop 9.0.3 (x86)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.x86"
-                    }
                 }
             }
         }
@@ -827,7 +797,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6DBB11048EDA4BF3A39FABAFC45E5B1C"
             {
-            "SourcePath" = "8:..\\StandardDeviationCalculator\\obj\\Release\\net9.0-windows7.0\\apphost.exe"
+            "SourcePath" = "8:..\\StandardDeviationCalculator\\obj\\Release\\net8.0-windows7.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0570ABD0562D4C3084D2A8B83FDDCFED"
