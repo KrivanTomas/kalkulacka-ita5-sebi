@@ -1,0 +1,4 @@
+xkrivat00 100 (uživatelská dokumentace, unit testy, dohled na práci, UI vzhled)
+xhavlap00 100 (implementace matematické knihovny, proofreading dokumentace)
+xkurtil00 100 (kalkulačka směrodatné odchylky, UI a responzivita, instalátor stddev)
+xkunseb00 100 (instalátor, propojení kalkulačky s knihovnou, proofreading dokumentace)
