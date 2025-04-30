@@ -236,7 +236,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SmolCalc"
         "ProductCode" = "8:{51C58265-AC2C-4672-9099-AED1C99915DE}"
-        "PackageCode" = "8:{92A3D7E4-CC3E-406F-9931-5EE1681DA3C9}"
+        "PackageCode" = "8:{B98D9007-C563-4B6E-A5A5-B16A7B6D9DA0}"
         "UpgradeCode" = "8:{9B0F2F58-E4C8-4905-9A85-60E092F04A60}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -253,7 +253,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_BDF1029D13874E8BA4601B3306C0B173"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -799,7 +799,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4FD5D7D0BE1E43A3BCED149A06BEF45E"
             {
-            "SourcePath" = "8:..\\SmolCalc\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\SmolCalc\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A61CC637720648C7B40D01B8503B0416"
