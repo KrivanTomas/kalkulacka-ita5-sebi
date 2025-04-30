@@ -98,8 +98,38 @@
                 {
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 a x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.9.0.Arm64"
+                    {
+                    "Name" = "8:Modul runtime .NET 9.0.3 (Arm64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.9.0.Arm64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.9.0.x64"
+                    {
+                    "Name" = "8:Modul runtime .NET 9.0.3 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.9.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.9.0.x86"
+                    {
+                    "Name" = "8:Modul runtime .NET 9.0.3 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.9.0.x86"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.Arm64"
+                    {
+                    "Name" = "8:Modul runtime .NET Desktop 9.0.3 (Arm64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.Arm64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.x64"
+                    {
+                    "Name" = "8:Modul runtime .NET Desktop 9.0.3 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.x86"
+                    {
+                    "Name" = "8:Modul runtime .NET Desktop 9.0.3 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.x86"
                     }
                 }
             }
@@ -137,7 +167,7 @@
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_249049F54BD94A8188C9BFED6E4F7243"
             {
             "SourcePath" = "8:stddev-uninstaller.bat"
-            "TargetName" = "8:stddev-uninstaller.bat"
+            "TargetName" = "8:uninstall-stddev.bat"
             "Tag" = "8:"
             "Folder" = "8:_0570ABD0562D4C3084D2A8B83FDDCFED"
             "Condition" = "8:"
@@ -262,7 +292,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:StandardDeviationCalculatorInstaller"
         "ProductCode" = "8:{7394BA31-17A5-418F-90CA-7B7AE2B154D2}"
-        "PackageCode" = "8:{19730F70-563D-4644-ACB1-18606EE08007}"
+        "PackageCode" = "8:{CCC23394-F0A7-4F2D-B916-2BE193957DBF}"
         "UpgradeCode" = "8:{0A1864D3-8C2C-41B8-A74C-0A799C2BF170}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -279,7 +309,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_DAB14B90FBB24C45B58796130D12FBBA"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -797,7 +827,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6DBB11048EDA4BF3A39FABAFC45E5B1C"
             {
-            "SourcePath" = "8:..\\StandardDeviationCalculator\\obj\\Release\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\StandardDeviationCalculator\\obj\\Release\\net9.0-windows7.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0570ABD0562D4C3084D2A8B83FDDCFED"
