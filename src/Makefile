@@ -9,11 +9,24 @@ smolcalc:
 
 .PHONY: pack
 pack: clean
-	cd ..; mkdir $(PACK_NAME); cd $(PACK_NAME); mkdir repo; mkdir doc; mkdir `install
+	cd ..; mkdir $(PACK_NAME); cd $(PACK_NAME); mkdir repo; mkdir doc; mkdir install
 	cd ..; cp ./* ./.* ./$(PACK_NAME)/repo; cp -r ./plan ./src ./profiling ./mockup ./.git ./$(PACK_NAME)/repo
 
-	cd ..; zip $(PACK_NAME).zip $(PACK_NAME) 
+	doxygen
+	cd ..; cp -r ./src/docs/* ./$(PACK_NAME)/doc
+
+	read -p "Please build the installer projects (in Visual Studio) and press Enter to continue"
+
+	cd ..; cp ./src/SmolCalcInstaller/Release/SmolCalcInstaller.msi ./$(PACK_NAME)/install
+	cd ..; cp ./src/StandardDeviationCalculatorInstaller/Release/StandardDeviationCalculatorInstaller.msi ./$(PACK_NAME)/install
+
+
+	cd ..; zip -r $(PACK_NAME).zip $(PACK_NAME)/*
 	cd ..; rm -rf ./$(PACK_NAME)
+
+.PHONY: doc
+doc:
+	doxygen
 
 .PHONY: clean
 clean:
