@@ -1,6 +1,6 @@
 Oproti plánu nezbyl čas na rozšíření kalkulačky.
 Od cca 4. termínu v plánu (Implementace matematické knihovny) se opravdové splnění úkolů oddalovalo od stanovených deadlinů.
 Rozdělění úkolů bylo vyhovující a nebylo třeba ho výrazně pozměnit.
-Github se osvědšil při řízení celého projektu.
-Discord a Trello bylo používáno méně oproti Githubu, navíc konverzace nebyly tolik přehldné.
-Ale Discord byl užitečný při rychlé domluvě obecných věcí.
+Github se osvědčil při řízení celého projektu.
+Discord a Trello byly používány méně oproti GitHubu, navíc konverzace nebyly tolik přehledné.
+Přesto byl Discord užitečný při rychlé domluvě obecných věcí.
